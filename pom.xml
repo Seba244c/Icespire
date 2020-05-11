@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.seba244c.icespire</groupId>
   <artifactId>Icespire</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   
   <name>Icespire</name>
@@ -23,70 +23,85 @@
     </resources>
     
     <plugins>
-    <!-- Deploay plugin -->
-    <plugin>
-<artifactId>maven-deploy-plugin</artifactId>
-<version>2.8.2</version>
-<executions>
-<execution>
-<id>default-deploy</id>
-<phase>deploy</phase>
-<goals>
-<goal>deploy</goal>
-</goals>
-</execution>
-</executions>
-</plugin>
-    
-    <!-- Release plugin -->
-	<plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-release-plugin</artifactId>
-	<version>2.5.3</version>
-	<configuration>
-	<localCheckout>true</localCheckout>
-	<pushChanges>false</pushChanges>
-	<mavenExecutorId>forked-path</mavenExecutorId>
-	<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-	</configuration>
-	<dependencies>
-	<dependency>
-	<groupId>org.apache.maven.scm</groupId>
-	<artifactId>maven-scm-provider-gitexe</artifactId>
-	<version>1.9.5</version>
-	</dependency>
-	</dependencies>
-	</plugin>
-	
-	<!--  Nexus -->
-	<plugin>
-	<groupId>org.sonatype.plugins</groupId>
-	<artifactId>nexus-staging-maven-plugin</artifactId>
-	<version>1.6.7</version>
-	<extensions>true</extensions>
-	<configuration>
-	<serverId>ossrh</serverId>
-	<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-	<autoReleaseAfterClose>true</autoReleaseAfterClose>
-	</configuration>
-	</plugin>
-	
-	<!-- javadoc -->
-	<plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-source-plugin</artifactId>
-	<version>2.10.4</version>
-	<configuration>
-	<encoding>UTF-8</encoding>
-	</configuration>
-	<executions>
-	<execution>
-	<id>attach-javadoc</id>
-	<goals>
-	</goals>
-	</execution>  
-	</executions>
-	</plugin>
+	    <!-- Deploay plugin -->
+	    <plugin>
+		<artifactId>maven-deploy-plugin</artifactId>
+		<version>2.8.2</version>
+		<executions>
+		<execution>
+		<id>default-deploy</id>
+		<phase>deploy</phase>
+		<goals>
+		<goal>deploy</goal>
+		</goals>
+		</execution>
+		</executions>
+		</plugin>
+	    
+	    <!-- Release plugin -->
+		<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-release-plugin</artifactId>
+		<version>2.5.3</version>
+		<configuration>
+		<localCheckout>true</localCheckout>
+		<pushChanges>false</pushChanges>
+		<mavenExecutorId>forked-path</mavenExecutorId>
+		<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+		</configuration>
+		<dependencies>
+		<dependency>
+		<groupId>org.apache.maven.scm</groupId>
+		<artifactId>maven-scm-provider-gitexe</artifactId>
+		<version>1.9.5</version>
+		</dependency>
+		</dependencies>
+		</plugin>
+		
+		<!--  Nexus -->
+		<plugin>
+		<groupId>org.sonatype.plugins</groupId>
+		<artifactId>nexus-staging-maven-plugin</artifactId>
+		<version>1.6.7</version>
+		<extensions>true</extensions>
+		<configuration>
+		<serverId>ossrh</serverId>
+		<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		<autoReleaseAfterClose>true</autoReleaseAfterClose>
+		</configuration>
+		</plugin>
+		
+		<!-- javadoc -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>3.2.0</version>
+			<configuration>
+			<encoding>UTF-8</encoding>
+			</configuration>
+			<executions>
+			<execution>
+			<id>attach-javadoc</id>
+			<goals>
+			</goals>
+			</execution>  
+			</executions>
+		</plugin>
+		
+		<!-- Source -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-source-plugin</artifactId>
+			<version>3.0.1</version>
+			<executions>
+			<execution>
+			<id>attach-sources</id>
+			<goals>
+			<goal>jar</goal>
+			</goals>
+			</execution>
+			</executions>
+		</plugin>
 	
 		<plugin>
 			<artifactId>maven-compiler-plugin</artifactId>
@@ -357,6 +372,6 @@
 	<connection>scm:git:git://github.com/Sebsa/Icespire.git</connection>
 	<developerConnection>scm:git:git@github.com:Sebsa/Sebsa.git</developerConnection>
 	<url>https://https://github.com/Seba244c/Icespire</url>
-	<tag>HEAD</tag>
+	<tag>Icespire-1.0.0</tag>
 </scm>
 </project>
