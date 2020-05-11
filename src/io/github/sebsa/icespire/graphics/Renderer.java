@@ -72,8 +72,8 @@ public class Renderer {
     	Logging.infoLog("Renderer", "init", "Initializing the shaderprogram");
         // Create shader
         shaderProgram = new ShaderProgram();
-        shaderProgram.createVertexShader(FileUtils.loadResourceAsString("/resources/shaders/vertex.glsl"));
-	    shaderProgram.createFragmentShader(FileUtils.loadResourceAsString("/resources/shaders/fragment.glsl"));
+        shaderProgram.createVertexShader(FileUtils.loadResourceAsString("/shaders/vertex.glsl"));
+	    shaderProgram.createFragmentShader(FileUtils.loadResourceAsString("/shaders/fragment.glsl"));
         shaderProgram.link();
 
         // Create uniforms for modelView and projection matrices and texture
@@ -232,8 +232,8 @@ public class Renderer {
     
     private void setupHudShader() throws Exception {
         hudShaderProgram = new ShaderProgram();
-        hudShaderProgram.createVertexShader(FileUtils.loadResourceAsString("/resources/shaders/hud_vertex.glsl"));
-        hudShaderProgram.createFragmentShader(FileUtils.loadResourceAsString("/resources/shaders/hud_fragment.glsl"));
+        hudShaderProgram.createVertexShader(FileUtils.loadResourceAsString("/shaders/hud_vertex.glsl"));
+        hudShaderProgram.createFragmentShader(FileUtils.loadResourceAsString("/shaders/hud_fragment.glsl"));
         hudShaderProgram.link();
 
         // Create uniforms for Ortographic-model projection matrix and base colour
@@ -243,8 +243,8 @@ public class Renderer {
     
     private void setupSpriteShader() throws Exception {
         spriteShaderProgram = new ShaderProgram();
-        spriteShaderProgram.createVertexShader(FileUtils.loadResourceAsString("/resources/shaders/sprite_vertex.glsl"));
-        spriteShaderProgram.createFragmentShader(FileUtils.loadResourceAsString("/resources/shaders/sprite_fragment.glsl"));
+        spriteShaderProgram.createVertexShader(FileUtils.loadResourceAsString("/shaders/sprite_vertex.glsl"));
+        spriteShaderProgram.createFragmentShader(FileUtils.loadResourceAsString("/shaders/sprite_fragment.glsl"));
         spriteShaderProgram.link();
 
         // Create uniforms for Ortographic-model projection matrix and base colour
