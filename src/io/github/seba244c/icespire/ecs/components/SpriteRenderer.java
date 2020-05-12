@@ -12,7 +12,6 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import org.joml.Vector3f;
 
 import io.github.seba244c.icespire.ecs.Component;
-import io.github.seba244c.icespire.ecs.Transform;
 import io.github.seba244c.icespire.graphics.Mesh;
 import io.github.seba244c.icespire.graphics.Renderer;
 import io.github.seba244c.icespire.graphics.Texture;

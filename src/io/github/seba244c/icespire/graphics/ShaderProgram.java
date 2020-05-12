@@ -1,7 +1,6 @@
 package io.github.seba244c.icespire.graphics;
 
 import static org.lwjgl.opengl.GL20.*;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -197,7 +196,7 @@ public class ShaderProgram {
     	LoggingUtils.infoLog("ShaderProgram", "link", "Linking the ShaderProgram");
         glLinkProgram(programId);
         if (glGetProgrami(programId, GL_LINK_STATUS) == 0) {
-            throw new Exception("[ShaderProgram.java/link] Error linking Shader code: " + glGetProgramInfoLog(programId, 1024));
+            throw new UnknownError("[ShaderProgram.java/link] Error linking Shader code: " + glGetProgramInfoLog(programId, 1024));
         }
 
         if (vertexShaderId != 0) {
