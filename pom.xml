@@ -6,7 +6,7 @@
   <packaging>jar</packaging>
   
   <name>Icespire</name>
-  <description>Icespire is a high-end lwjgl wrapper. Helping java develoopers with creating games</description>
+  <description>Icespire is a high-end Java libary wich builds upon lwjgl. Helping java develoopers with creating games. Providing easy window creation, develoopment tools and a fully functional Entity Component System.</description>
   <url>github.com/Sebsa/Icespire</url>
   
   <properties>
