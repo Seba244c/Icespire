@@ -27,11 +27,15 @@ public class Logging {
 	private static boolean disableLogging = false;
 	private static JFrame frame;
 	private static PrintStream ps;
-	private static JTextPane console, performance, timer;
+	private static JTextPane console;
+	private static JTextPane performance;
+	private static JTextPane timer;
 	private static JToolBar toolBar;
 	private static JScrollPane consoleComp;
-	private static Style performanceStyle, timerStyle;
-	private static DefaultStyledDocument performanceDocument, timerDocument;
+	private static Style performanceStyle;
+	private static Style timerStyle;
+	private static DefaultStyledDocument performanceDocument;
+	private static DefaultStyledDocument timerDocument;
 	/**
 	 * Prints a line to console with the format "[file.java/method] Message", will be colored yellow if using Logging dev window
 	 * @param file The file calling this
@@ -180,19 +184,19 @@ public class Logging {
         ActionListener al = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(e.getActionCommand() == "s1") {
+				if(e.getActionCommand().equals("s1")) {
 					frame.remove(performance);
 					frame.remove(timer);
 					frame.add(consoleComp);
 					frame.pack();
 					frame.setSize(600, 155);
-				} else if(e.getActionCommand() == "s2") {
+				} else if(e.getActionCommand().equals("s2")) {
 					frame.remove(consoleComp);
 					frame.remove(timer);
 					frame.add(performance);
 					frame.pack();
 					frame.setSize(600, 155);
-				} else if(e.getActionCommand() == "s3") {
+				} else if(e.getActionCommand().equals("s3")) {
 					frame.remove(consoleComp);
 					frame.remove(performance);
 					frame.add(timer);

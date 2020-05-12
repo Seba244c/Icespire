@@ -43,7 +43,7 @@ public class SpriteRenderer extends Component {
 
         // Draw the mesh
         glBindVertexArray(mesh.getVaoId());
-        if(!(entity.getTransform().getPosition().z==0))
+        if(entity.getTransform().getPosition().z!=0)
         	entity.getTransform().getPosition().z = 0;
         glDrawElements(GL_TRIANGLES, mesh.getVertexCount(), GL_UNSIGNED_INT, 0);
 

@@ -98,7 +98,7 @@ public class Renderer {
     
     public void render(Window window, Entity camera, Vector3f ambientLight, Hud hud, Scene scene) throws Exception {
     	if(camera.getComponent(CCamera.class)==null)
-    		throw new Exception("[Renderer.java/render] Given camera entity has no CCamera component");
+    		throw new IllegalArgumentException("[Renderer.java/render] Given camera entity has no CCamera component");
         clear();
 
         if (window.isResized()) {
@@ -115,7 +115,7 @@ public class Renderer {
     
     public void render(Window window, Entity camera, Vector3f ambientLight, Scene scene) throws Exception {
     	if(camera.getComponent(CCamera.class)==null) 
-    		throw new Exception("[Renderer.java/render] Given camera entity has no CCamera component");
+    		throw new IllegalArgumentException("[Renderer.java/render] Given camera entity has no CCamera component");
         clear();
 
         if (window.isResized()) {

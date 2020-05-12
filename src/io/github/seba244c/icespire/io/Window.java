@@ -43,7 +43,8 @@ public class Window {
     private boolean resized;
     private boolean isFullscreen;
     private String title;
-    private int[] posX = new int[1], posY = new int[1];
+    private int[] posX = new int[1];
+    private int[] posY = new int[1];
 	private boolean lineView, vSync;
 	private boolean isCursorShown = true;
 	private int frames;
@@ -302,8 +303,8 @@ public class Window {
 			tempW = width;
 			tempH = height;
 			GLFWVidMode videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
-			GLFW.glfwGetWindowPos(windowId, posX, posY);
-			GLFW.glfwSetWindowMonitor(windowId, GLFW.glfwGetPrimaryMonitor(), 0, 0, videoMode.width(), videoMode.height(), GLFW.GLFW_DONT_CARE);
+			glfwGetWindowPos(windowId, posX, posY);
+			glfwSetWindowMonitor(windowId, GLFW.glfwGetPrimaryMonitor(), 0, 0, videoMode.width(), videoMode.height(), GLFW.GLFW_DONT_CARE);
 			// Enable v-sync
 			if(vSync) {
 				glfwSwapInterval(1);
@@ -311,7 +312,7 @@ public class Window {
 				glfwSwapInterval(0);
 			}
 		} else {
-			GLFW.glfwSetWindowMonitor(windowId, 0, posX[0], posY[0], tempW, tempH, GLFW.GLFW_DONT_CARE);
+			glfwSetWindowMonitor(windowId, 0, posX[0], posY[0], tempW, tempH, GLFW.GLFW_DONT_CARE);
 		}
 	}
     

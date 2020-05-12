@@ -2,6 +2,7 @@ package io.github.seba244c.icespire.graphics;
 
 import static org.lwjgl.opengl.GL20.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -177,14 +178,14 @@ public class ShaderProgram {
     	Logging.infoLog("ShaderProgram", "createShader", "Creating Shader with type: " + shaderType);
         int shaderId = glCreateShader(shaderType);
         if (shaderId == 0) {
-            throw new Exception("[ShaderProgram.java/createShader] Error creating shader. Type: " + shaderType);
+            throw new IllegalStateException("[ShaderProgram.java/createShader] Error creating shader. Type: " + shaderType);
         }
 
         glShaderSource(shaderId, shaderCode);
         glCompileShader(shaderId);
 
         if (glGetShaderi(shaderId, GL_COMPILE_STATUS) == 0) {
-            throw new Exception("[ShaderProgram.java/createShader] Error compiling Shader code: " + glGetShaderInfoLog(shaderId, 1024));
+            throw new IOException("[ShaderProgram.java/createShader] Error compiling Shader code: " + glGetShaderInfoLog(shaderId, 1024));
         }
 
         glAttachShader(programId, shaderId);

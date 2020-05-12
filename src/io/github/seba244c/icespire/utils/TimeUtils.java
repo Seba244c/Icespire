@@ -2,7 +2,8 @@ package io.github.seba244c.icespire.utils;
 
 public class TimeUtils {
 	private static double time1;
-	private static double dt, adt;
+	private static double dt;
+	private static double adt;
 	/**
 	 * Starts timer 1
 	 */

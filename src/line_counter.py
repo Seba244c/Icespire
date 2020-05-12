@@ -29,7 +29,6 @@ def countlines(start, lines=0, header=True, begin_start=None):
             lines = countlines(thing, lines, header=False, begin_start=start)
 
     return lines
-	
 mode = input("1. All programming languges\n2. Java only ")
 if(mode == "2"):
 	input(countlines('com/'))
