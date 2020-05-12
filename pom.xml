@@ -2,7 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.seba244c.icespire</groupId>
   <artifactId>Icespire</artifactId>
+<<<<<<< HEAD
   <version>0.1.1-SNAPSHOT</version>
+=======
+  <version>1.0.0</version>
+>>>>>>> f2e8d8a7ab80c43ce71c7db4573eec0a603f68cc
   <packaging>jar</packaging>
   
   <name>Icespire</name>
@@ -60,6 +64,7 @@
 		
 		<!--  Nexus -->
 		<plugin>
+<<<<<<< HEAD
 			<groupId>org.sonatype.plugins</groupId>
 			<artifactId>nexus-staging-maven-plugin</artifactId>
 			<version>1.6.7</version>
@@ -69,10 +74,22 @@
 			<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 			<autoReleaseAfterClose>true</autoReleaseAfterClose>
 			</configuration>
+=======
+		<groupId>org.sonatype.plugins</groupId>
+		<artifactId>nexus-staging-maven-plugin</artifactId>
+		<version>1.6.7</version>
+		<extensions>true</extensions>
+		<configuration>
+		<serverId>ossrh</serverId>
+		<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+		<autoReleaseAfterClose>true</autoReleaseAfterClose>
+		</configuration>
+>>>>>>> f2e8d8a7ab80c43ce71c7db4573eec0a603f68cc
 		</plugin>
 		
 		<!-- javadoc -->
 		<plugin>
+<<<<<<< HEAD
 		  <groupId>org.apache.maven.plugins</groupId>
 		  <artifactId>maven-javadoc-plugin</artifactId>
 		  <version>3.1.0</version>
@@ -84,13 +101,32 @@
 		      </goals>
 		    </execution>
 		  </executions>
+=======
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>3.2.0</version>
+			<configuration>
+			<encoding>UTF-8</encoding>
+			</configuration>
+			<executions>
+			<execution>
+			<id>attach-javadoc</id>
+			<goals>
+			</goals>
+			</execution>  
+			</executions>
+>>>>>>> f2e8d8a7ab80c43ce71c7db4573eec0a603f68cc
 		</plugin>
 		
 		<!-- Source -->
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-source-plugin</artifactId>
+<<<<<<< HEAD
 			<version>3.1.0</version>
+=======
+			<version>3.0.1</version>
+>>>>>>> f2e8d8a7ab80c43ce71c7db4573eec0a603f68cc
 			<executions>
 			<execution>
 			<id>attach-sources</id>
@@ -139,11 +175,14 @@
     	<artifactId>reflections</artifactId>
     	<version>0.9.11</version>
 	</dependency>
+<<<<<<< HEAD
 	<dependency>
 		<groupId>org.joml</groupId>
 		<artifactId>joml</artifactId>
 		<version>1.9.24</version>
 	</dependency>
+=======
+>>>>>>> f2e8d8a7ab80c43ce71c7db4573eec0a603f68cc
 	
         <dependency>
             <groupId>org.lwjgl</groupId>
@@ -372,10 +411,18 @@
 	
 		
 	<scm>
+<<<<<<< HEAD
 	<connection>scm:git:git://github.com/Seba244c/Icespire.git</connection>
 	<developerConnection>scm:git:git@github.com:Seba244c/Seba244c.git</developerConnection>
 	<url>https://https://github.com/Seba244c/Icespire</url>
 	<tag>Icespire-1.0.0</tag>
 </scm>
 	<url>github.com/Sebsa/Icespire</url>
+=======
+	<connection>scm:git:git://github.com/Sebsa/Icespire.git</connection>
+	<developerConnection>scm:git:git@github.com:Sebsa/Sebsa.git</developerConnection>
+	<url>https://https://github.com/Seba244c/Icespire</url>
+	<tag>Icespire-1.0.0</tag>
+</scm>
+>>>>>>> f2e8d8a7ab80c43ce71c7db4573eec0a603f68cc
 </project>
