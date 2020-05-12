@@ -69,7 +69,6 @@ public class Renderer {
 
     public void init() throws Exception {
     	Logging.infoLog("Renderer", "init", "Initializing Renderer");
-    	Logging.infoLog("Renderer", "init", "Initializing the shaderprogram");
         // Create shader
         shaderProgram = new ShaderProgram();
         shaderProgram.createVertexShader(FileUtils.loadResourceAsString("/shaders/vertex.glsl"));
@@ -97,81 +96,34 @@ public class Renderer {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
     
-    public void render(Window window, Entity camera, Vector3f ambientLight, Hud hud, Scene scene) {
+    public void render(Window window, Entity camera, Vector3f ambientLight, Hud hud, Scene scene) throws Exception {
     	if(camera.getComponent(CCamera.class)==null)
-    		return;
+    		throw new Exception("[Renderer.java/render] Given camera entity has no CCamera component");
         clear();
 
         if (window.isResized()) {
             glViewport(0, 0, window.getWidth(), window.getHeight());
             window.setResized(false);
         }
-
-        shaderProgram.bind();
-
-        // Update projection Matrix
-        Matrix4f projectionMatrix = transformation.getProjectionMatrix(FOV, window.getWidth(), window.getHeight(), Z_NEAR, Z_FAR);
-        shaderProgram.setUniform("projectionMatrix", projectionMatrix);
-
-        // Update view Matrix
-        Matrix4f viewMatrix = transformation.getViewMatrix(camera);
-
-        // Update Light Uniforms
-        renderLights(viewMatrix, ambientLight, scene.getPointLights(), scene.getSpotLights(), scene.getDirectionalLight());
-
-        shaderProgram.setUniform("texture_sampler", 0);
-        // Render each mesh
-        for (MeshRenderer meshRenderer : tbrMeshs) {
-            // Set model view matrix for this item
-            Matrix4f modelViewMatrix = transformation.getModelViewMatrix(meshRenderer.entity, viewMatrix);
-            shaderProgram.setUniform("modelViewMatrix", modelViewMatrix);
-            // Render the mesh for this game item
-            shaderProgram.setUniform("material", meshRenderer.getMesh().getMaterial());
-            meshRenderer.renderMesh();
-        }
-        tbrMeshs.clear();
         
-        shaderProgram.unbind();
+        renderMeshes(window, camera, ambientLight, scene);
         
         renderSprites(window);
         
         renderHud(window, hud);
     }
     
-    public void render(Window window, Entity camera, Vector3f ambientLight, Scene scene) {
-    	if(camera.getComponent(CCamera.class)==null)
-    		return;
+    public void render(Window window, Entity camera, Vector3f ambientLight, Scene scene) throws Exception {
+    	if(camera.getComponent(CCamera.class)==null) 
+    		throw new Exception("[Renderer.java/render] Given camera entity has no CCamera component");
         clear();
 
         if (window.isResized()) {
             glViewport(0, 0, window.getWidth(), window.getHeight());
             window.setResized(false);
         }
-
-        shaderProgram.bind();
-
-        // Update projection Matrix
-        Matrix4f projectionMatrix = transformation.getProjectionMatrix(FOV, window.getWidth(), window.getHeight(), Z_NEAR, Z_FAR);
-        shaderProgram.setUniform("projectionMatrix", projectionMatrix);
-
-        // Update view Matrix
-        Matrix4f viewMatrix = transformation.getViewMatrix(camera);
-
-        // Update Light Uniforms
-        renderLights(viewMatrix, ambientLight, scene.getPointLights(), scene.getSpotLights(), scene.getDirectionalLight());
-
-        shaderProgram.setUniform("texture_sampler", 0);
-        // Render each mesh
-        for (MeshRenderer meshRenderer : tbrMeshs) {
-            // Set model view matrix for this item
-            Matrix4f modelViewMatrix = transformation.getModelViewMatrix(meshRenderer.entity, viewMatrix);
-            shaderProgram.setUniform("modelViewMatrix", modelViewMatrix);
-            // Render the mesh for this game item
-            shaderProgram.setUniform("material", meshRenderer.getMesh().getMaterial());
-            meshRenderer.renderMesh();
-        }
-        tbrMeshs.clear();
         
+        renderMeshes(window, camera, ambientLight, scene);
         renderSprites(window);
         shaderProgram.unbind();
     }
@@ -271,6 +223,7 @@ public class Renderer {
     }
     
     private void renderSprites(Window window) {
+    	if(tbrSprites.isEmpty()) return;
     	spriteShaderProgram.bind();
         Matrix4f ortho = transformation.getOrthoProjectionMatrix(0, window.getWidth(), window.getHeight(), 0);
         for (SpriteRenderer sprite : tbrSprites) {
@@ -284,6 +237,35 @@ public class Renderer {
         }
         tbrSprites.clear();
         spriteShaderProgram.unbind();
+    }
+    
+    private void renderMeshes(Window window, Entity camera, Vector3f ambientLight, Scene scene) {
+    	if(tbrMeshs.isEmpty()) return;
+        shaderProgram.bind();
+
+        // Update projection Matrix
+        Matrix4f projectionMatrix = transformation.getProjectionMatrix(FOV, window.getWidth(), window.getHeight(), Z_NEAR, Z_FAR);
+        shaderProgram.setUniform("projectionMatrix", projectionMatrix);
+
+        // Update view Matrix
+        Matrix4f viewMatrix = transformation.getViewMatrix(camera);
+
+        // Update Light Uniforms
+        renderLights(viewMatrix, ambientLight, scene.getPointLights(), scene.getSpotLights(), scene.getDirectionalLight());
+
+        shaderProgram.setUniform("texture_sampler", 0);
+        // Render each mesh
+        for (MeshRenderer meshRenderer : tbrMeshs) {
+            // Set model view matrix for this item
+            Matrix4f modelViewMatrix = transformation.getModelViewMatrix(meshRenderer.entity, viewMatrix);
+            shaderProgram.setUniform("modelViewMatrix", modelViewMatrix);
+            // Render the mesh for this game item
+            shaderProgram.setUniform("material", meshRenderer.getMesh().getMaterial());
+            meshRenderer.renderMesh();
+        }
+        tbrMeshs.clear();
+        
+        shaderProgram.unbind();
     }
 
     public void cleanup() {

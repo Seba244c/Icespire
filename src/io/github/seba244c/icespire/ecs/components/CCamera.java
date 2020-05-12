@@ -2,6 +2,10 @@ package io.github.seba244c.icespire.ecs.components;
 
 import io.github.seba244c.icespire.ecs.Component;
 
+/**
+ * @author Sebsa
+ * @since 20-504
+ */
 public class CCamera extends Component {
 	/**
      * Changes the rotation of the Camera by an offset
