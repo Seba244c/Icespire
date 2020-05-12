@@ -2,11 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.seba244c.icespire</groupId>
   <artifactId>Icespire</artifactId>
-<<<<<<< HEAD
   <version>1.0.1-SNAPSHOT</version>
-=======
-  <version>0.1.1-SNAPSHOT</version>
->>>>>>> 7385ab931ca0e5000d042ce32c94e683f8043afb
   <packaging>jar</packaging>
   
   <name>Icespire</name>
@@ -381,8 +377,4 @@
 	<url>https://https://github.com/Seba244c/Icespire</url>
 	<tag>Icespire-1.0.0</tag>
 </scm>
-<<<<<<< HEAD
-=======
-	<url>github.com/Sebsa/Icespire</url>
->>>>>>> 7385ab931ca0e5000d042ce32c94e683f8043afb
 </project>
