@@ -3,7 +3,7 @@ Icespire is a high-end lwjgl wrapper. Helping java develoopers with creating gam
 
 Website: https://seba244c.github.io/Icespire-Website
 
-Website-repo: https://seba244c.github.io/Icespire-Website
+Website-repo: https://github.com/Seba244c/Icespire-Website
 
 ## Guide
 ### Get Started guide
