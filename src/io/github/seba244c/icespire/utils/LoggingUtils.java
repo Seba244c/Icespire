@@ -22,7 +22,7 @@ import io.github.seba244c.icespire.io.TextAreaOutputStream;
  * @since 20-406 
  *
  */
-public class Logging {
+public class LoggingUtils {
 	private static boolean customConsole = false;
 	private static boolean disableLogging = false;
 	private static JFrame frame;

@@ -26,7 +26,7 @@ public class FileUtils {
 	 * @throws Exception When the file is not found
 	 */
 	public static String loadResourceAsString(String fileName) throws Exception {
-		Logging.debugLog("FileUtils", "loadResourceAsString", "Loading file at path: "+fileName);
+		LoggingUtils.debugLog("FileUtils", "loadResourceAsString", "Loading file at path: "+fileName);
 		
         String result;
         try (InputStream in = FileUtils.class.getResourceAsStream(fileName);
@@ -43,7 +43,7 @@ public class FileUtils {
 	 * @throws Exception When the file is not found
 	 */
 	public static List<String> readAllLines(String fileName) throws Exception {
-		Logging.debugLog("FileUtils", "readAllLines", "Reading all lines of file at path: "+fileName);
+		LoggingUtils.debugLog("FileUtils", "readAllLines", "Reading all lines of file at path: "+fileName);
         List<String> list = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(Class.forName(FileUtils.class.getName()).getResourceAsStream(fileName)))) {
             String line;
@@ -61,7 +61,7 @@ public class FileUtils {
 	 * @return A IMG with the image Buffer, width and height
 	 */
 	public static IMG loadImage(String path) {
-		Logging.debugLog("FileUtils", "loadImage", "Loading image at path: "+path);
+		LoggingUtils.debugLog("FileUtils", "loadImage", "Loading image at path: "+path);
         ByteBuffer image;
         int width = 0;
         int height = 0;
@@ -72,7 +72,7 @@ public class FileUtils {
 
             image = STBImage.stbi_load(path, w, h, comp, 4);
             if (image == null) {
-                Logging.errorLog("FileUtils", "loadImage", "Couldn't load "+path);
+                LoggingUtils.errorLog("FileUtils", "loadImage", "Couldn't load "+path);
             }   
             width = w.get();
             height = h.get();

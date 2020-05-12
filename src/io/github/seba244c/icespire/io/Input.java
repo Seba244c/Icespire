@@ -12,7 +12,7 @@ import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.glfw.GLFWMouseButtonCallback;
 import org.lwjgl.glfw.GLFWScrollCallback;
 
-import io.github.seba244c.icespire.utils.Logging;
+import io.github.seba244c.icespire.utils.LoggingUtils;
 
 /**
  * Input handling
@@ -27,9 +27,12 @@ public class Input {
 	private boolean[] buttons = new boolean[GLFW.GLFW_MOUSE_BUTTON_LAST];
 	private boolean[] buttonsPressed = new boolean[GLFW.GLFW_MOUSE_BUTTON_LAST];
 	private boolean[] buttonsReleased = new boolean[GLFW.GLFW_MOUSE_BUTTON_LAST];
-	private double mouseX, mouseY;
-	private double prevMouseX, prevMouseY;
-	private double scrollX, scrollY;
+	private double mouseX;
+	private double mouseY;
+	private double prevMouseX;
+	private double prevMouseY;
+	private double scrollX;
+	private double scrollY;
 	private final Vector2f displVec;
 	private boolean inWindow = false;
 	private final Window window;
@@ -117,7 +120,7 @@ public class Input {
 	}
 	
 	public void cleanup(long windowId) {
-		Logging.infoLog("Input", "cleanup", "Freeing callbacks");
+		LoggingUtils.infoLog("Input", "cleanup", "Freeing callbacks");
 		glfwFreeCallbacks(windowId);
 	}
 

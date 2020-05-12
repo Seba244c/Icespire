@@ -10,11 +10,10 @@ public abstract class Component<T> {
 	public Entity entity;
 	
 	public void update() {
+		// all components needs to have this function
 	}
 	
 	public void cleanup() {
-	}
-	
-	public void setup(Window window) {
+		// all components needs to have this function
 	}
 }

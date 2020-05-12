@@ -18,7 +18,7 @@ import org.joml.Vector3f;
 
 import io.github.seba244c.icespire.utils.FileUtils;
 import io.github.seba244c.icespire.utils.IMG;
-import io.github.seba244c.icespire.utils.Logging;
+import io.github.seba244c.icespire.utils.LoggingUtils;
 
 /**
  * The glfw window the user sees everything in
@@ -45,12 +45,19 @@ public class Window {
     private String title;
     private int[] posX = new int[1];
     private int[] posY = new int[1];
-	private boolean lineView, vSync;
+	private boolean lineView;
+	private boolean vSync;
 	private boolean isCursorShown = true;
 	private int frames;
 	private int fps;
 	private static long time;
-	private static double averegeFrameTime, aft, afl;
+	
+	
+	// Vars used in Averege frame length calculation
+	private static double averegeFrameTime;
+	private static double aft;
+	private static double afl;
+	
 	private boolean showFps;
 	private DecimalFormat aftFormat;
 
@@ -78,14 +85,14 @@ public class Window {
 	 * @param clearColor The background color of the window
 	 */
 	public void init(Vector3f clearColor) {
-		Logging.infoLog("Window", "init", "Initializing Window");
+		LoggingUtils.infoLog("Window", "init", "Initializing Window");
 		// Setup an error callback. The default implementation
 		// will print the error message in System.err.
 		GLFWErrorCallback.createPrint(System.err).set();
 		
 		// Initialize GLFW. Most GLFW functions will not work before doing this.
 		if ( !glfwInit() ) {
-			Logging.errorLog("Window", "init", "Unable to initialize GLFW");
+			LoggingUtils.errorLog("Window", "init", "Unable to initialize GLFW");
 			throw new IllegalStateException("[Window.java/init] Unable to initialize GLFW");
 		}
 		// Configure GLFW
@@ -102,8 +109,8 @@ public class Window {
 		// Create the window
 		windowId = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
 		if ( windowId == NULL ) {
-			Logging.errorLog("Window", "init", "Failed to create the GLFW window");
-			throw new RuntimeException("[Window.java/init] Failed to create the GLFW window");
+			LoggingUtils.errorLog("Window", "init", "Failed to create the GLFW window");
+			throw new IllegalStateException("[Window.java/init] Failed to create the GLFW window");
 		}
 		// Setup resize callback
         glfwSetFramebufferSizeCallback(windowId, (window, width, height) -> {
@@ -140,7 +147,7 @@ public class Window {
 		// LWJGL detects the context that is current in the current thread,
 		// creates the GLCapabilities instance and makes the OpenGL
 		// bindings available for use.
-		Logging.infoLog("Window", "init", "Setting up OpenGL");
+		LoggingUtils.infoLog("Window", "init", "Setting up OpenGL");
 		GL.createCapabilities();
 		glEnable(GL_DEPTH_TEST);
 		
@@ -153,7 +160,7 @@ public class Window {
 		glClearColor(clearColor.x, clearColor.y, clearColor.z, 0.0f);
 		
 		// Input
-		Logging.infoLog("Window", "init", "Creating the input class");
+		LoggingUtils.infoLog("Window", "init", "Creating the input class");
 		input = new Input(this);
 		glfwSetInputMode(windowId, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		
@@ -171,7 +178,7 @@ public class Window {
 	 * Cleanup and destroys the window. Should happen on shutdown
 	 */
 	public void cleanup() {
-		Logging.infoLog("Window", "cleanup", "Destorying window");
+		LoggingUtils.infoLog("Window", "cleanup", "Destorying window");
 		input.cleanup(windowId);
 		// Free the window callbacks and destroy the window
 		glfwFreeCallbacks(windowId);
@@ -201,13 +208,13 @@ public class Window {
 		// Fps and report to logging class
 		if (System.currentTimeMillis() > time + 1000) {
 			if(showFps) {
-				GLFW.glfwSetWindowTitle(windowId, title + " | FPS: " + frames);
+				glfwSetWindowTitle(windowId, title + " | FPS: " + frames);
 			}
 			fps = frames;
 			time = System.currentTimeMillis();
 			frames = 0;
 			
-			try { Logging.report(fps, aftFormat.format(averegeFrameTime/fps/1000)); } catch (BadLocationException e) {
+			try { LoggingUtils.report(fps, aftFormat.format(averegeFrameTime/fps/1000)); } catch (BadLocationException e) {
 				e.printStackTrace();
 			}
 			averegeFrameTime = 0;
@@ -227,7 +234,7 @@ public class Window {
 	 * @param title The title
 	 */
 	public void setTitle(String title) {
-		Logging.infoLog("Window", "setTitle", "Setting title of the window to: " + title);
+		LoggingUtils.infoLog("Window", "setTitle", "Setting title of the window to: " + title);
 		glfwSetWindowTitle(windowId, title);
 	}
 	
@@ -243,7 +250,7 @@ public class Window {
 	 * Setups the default input callbacks to the Input class.
 	 */
 	public void setDefaultICallbacks() {
-		Logging.debugLog("Window", "setDefaultICallbacks", "Setting up input callbacks");
+		LoggingUtils.debugLog("Window", "setDefaultICallbacks", "Setting up input callbacks");
 		glfwSetKeyCallback(windowId, input.getKeyboardCallback());
 		glfwSetCursorPosCallback(windowId, input.getMouseMoveCallback());
 		glfwSetScrollCallback(windowId, input.getMouseScrollCallback());
@@ -296,15 +303,15 @@ public class Window {
      * @param isFullscreen True to enable fullscren false to disable
      */
     public void setFullscreen(boolean isFullscreen) {
-    	Logging.infoLog("Window", "setFullscreen", "Setting fullscreen to: " + isFullscreen);
+    	LoggingUtils.infoLog("Window", "setFullscreen", "Setting fullscreen to: " + isFullscreen);
 		this.isFullscreen = isFullscreen;
 		resized = true;
 		if (isFullscreen) {
 			tempW = width;
 			tempH = height;
-			GLFWVidMode videoMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
+			GLFWVidMode videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 			glfwGetWindowPos(windowId, posX, posY);
-			glfwSetWindowMonitor(windowId, GLFW.glfwGetPrimaryMonitor(), 0, 0, videoMode.width(), videoMode.height(), GLFW.GLFW_DONT_CARE);
+			glfwSetWindowMonitor(windowId, glfwGetPrimaryMonitor(), 0, 0, videoMode.width(), videoMode.height(), GLFW_DONT_CARE);
 			// Enable v-sync
 			if(vSync) {
 				glfwSwapInterval(1);
@@ -312,7 +319,7 @@ public class Window {
 				glfwSwapInterval(0);
 			}
 		} else {
-			glfwSetWindowMonitor(windowId, 0, posX[0], posY[0], tempW, tempH, GLFW.GLFW_DONT_CARE);
+			glfwSetWindowMonitor(windowId, 0, posX[0], posY[0], tempW, tempH, GLFW_DONT_CARE);
 		}
 	}
     
@@ -321,7 +328,7 @@ public class Window {
      * @param bool True if rendered as line false if not 
      */
     public void setLineView(boolean bool) {
-    	Logging.infoLog("Window", "setLineView", "Setting line view to: " + bool);
+    	LoggingUtils.infoLog("Window", "setLineView", "Setting line view to: " + bool);
     	if (bool) { glPolygonMode( GL_FRONT_AND_BACK, GL_LINE  ); } else { glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); }
     	lineView = bool;
     }
@@ -338,7 +345,7 @@ public class Window {
      * @param path Image path
      */
     public void setIcon(String path) {
-    	Logging.infoLog("Window", "setIcon", "Setting icon to file at: " + path);
+    	LoggingUtils.infoLog("Window", "setIcon", "Setting icon to file at: " + path);
     	IMG icon = FileUtils.loadImage(path);
     	GLFWImage iconImage = GLFWImage.malloc();
     	iconBuffer = GLFWImage.malloc(1); 
@@ -383,7 +390,7 @@ public class Window {
      */
     public void setVSync(boolean vsync) {
     	vSync = vsync;
-    	Logging.infoLog("Window", "setVSync", "Setting vsync to: " + vsync);
+    	LoggingUtils.infoLog("Window", "setVSync", "Setting vsync to: " + vsync);
     	if(vSync) {
     		glfwSwapInterval(1);
     	} else {

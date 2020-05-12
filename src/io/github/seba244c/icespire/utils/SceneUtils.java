@@ -1,5 +1,5 @@
 package io.github.seba244c.icespire.utils;
-import org.reflections.*;
+import org.reflections.Reflections;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,6 +49,6 @@ public class SceneUtils {
 			entities.put(entiyObject);
 		}
 		obj.put("entities", entities);
-		Logging.infoLog("SceneUtils", obj.toString());
+		LoggingUtils.infoLog("SceneUtils", obj.toString());
 	}
 }

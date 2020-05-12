@@ -23,7 +23,7 @@ public class OBJLoader {
      * @throws Exception When the file is not found
      */
     public static Mesh loadMesh(String fileName) throws Exception {
-    	Logging.debugLog("OBJLoader", "Loading OBJ file at path: "+fileName);
+    	LoggingUtils.debugLog("OBJLoader", "Loading OBJ file at path: "+fileName);
         List<String> lines = FileUtils.readAllLines(fileName);
         
         List<Vector3f> vertices = new ArrayList<>();

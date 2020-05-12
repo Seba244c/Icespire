@@ -22,7 +22,7 @@ import io.github.seba244c.icespire.graphics.lighting.PointLight;
 import io.github.seba244c.icespire.graphics.lighting.SpotLight;
 import io.github.seba244c.icespire.io.Window;
 import io.github.seba244c.icespire.utils.FileUtils;
-import io.github.seba244c.icespire.utils.Logging;
+import io.github.seba244c.icespire.utils.LoggingUtils;
 
 /**
  * The renderer renders the meshes of gamobjects to the window
@@ -46,7 +46,9 @@ public class Renderer {
 
     private final Transformation transformation;
 
-    private ShaderProgram shaderProgram, hudShaderProgram, spriteShaderProgram;
+    private ShaderProgram shaderProgram;
+    private ShaderProgram hudShaderProgram;
+    private ShaderProgram spriteShaderProgram;
 
     private final float specularPower;
     
@@ -68,7 +70,7 @@ public class Renderer {
     }
 
     public void init() throws Exception {
-    	Logging.infoLog("Renderer", "init", "Initializing Renderer");
+    	LoggingUtils.infoLog("Renderer", "init", "Initializing Renderer");
         // Create shader
         shaderProgram = new ShaderProgram();
         shaderProgram.createVertexShader(FileUtils.loadResourceAsString("/shaders/vertex.glsl"));
@@ -269,7 +271,7 @@ public class Renderer {
     }
 
     public void cleanup() {
-    	Logging.infoLog("Renderer", "cleanup", "Cleaning up the Renderer");
+    	LoggingUtils.infoLog("Renderer", "cleanup", "Cleaning up the Renderer");
         if (shaderProgram != null) {
             shaderProgram.cleanup();
         }

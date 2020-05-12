@@ -14,7 +14,7 @@ import org.lwjgl.system.MemoryStack;
 import io.github.seba244c.icespire.graphics.lighting.DirectionalLight;
 import io.github.seba244c.icespire.graphics.lighting.PointLight;
 import io.github.seba244c.icespire.graphics.lighting.SpotLight;
-import io.github.seba244c.icespire.utils.Logging;
+import io.github.seba244c.icespire.utils.LoggingUtils;
 
 /**
  * Controls the shaders of games
@@ -29,22 +29,22 @@ public class ShaderProgram {
     private final Map<String, Integer> uniforms;
 
     public ShaderProgram() throws Exception {
-    	Logging.infoLog("ShaderProgram", "Creating the Shader");
+    	LoggingUtils.infoLog("ShaderProgram", "Creating the Shader");
   
         programId = glCreateProgram();
         if (programId == 0) {
-        	Logging.errorLog("ShaderProgram", "Could not create the shader");
-            throw new Exception("[ShaderProgram.java] Could not create Shader");
+        	LoggingUtils.errorLog("ShaderProgram", "Could not create the shader");
+            throw new IllegalStateException("[ShaderProgram.java] Could not create Shader");
         }
         uniforms = new HashMap<>();
     }
 
     public void createUniform(String uniformName) throws Exception {
-    	Logging.debugLog("ShaderProgram", "createUniform", "Creating uniform: "+uniformName);
+    	LoggingUtils.debugLog("ShaderProgram", "createUniform", "Creating uniform: "+uniformName);
         int uniformLocation = glGetUniformLocation(programId, uniformName);
         if (uniformLocation < 0) {
-        	Logging.errorLog("ShaderProgram", "createUniform", "Could not find uniform:"+uniformName);
-            throw new Exception("[ShaderProgram.java/createUniform] Could not find uniform:" + uniformName);
+        	LoggingUtils.errorLog("ShaderProgram", "createUniform", "Could not find uniform:"+uniformName);
+            throw new IllegalArgumentException("[ShaderProgram.java/createUniform] Could not find uniform:" + uniformName);
         }
         uniforms.put(uniformName, uniformLocation);
     }
@@ -175,7 +175,7 @@ public class ShaderProgram {
     }
 
     protected int createShader(String shaderCode, int shaderType) throws Exception {
-    	Logging.infoLog("ShaderProgram", "createShader", "Creating Shader with type: " + shaderType);
+    	LoggingUtils.infoLog("ShaderProgram", "createShader", "Creating Shader with type: " + shaderType);
         int shaderId = glCreateShader(shaderType);
         if (shaderId == 0) {
             throw new IllegalStateException("[ShaderProgram.java/createShader] Error creating shader. Type: " + shaderType);
@@ -194,7 +194,7 @@ public class ShaderProgram {
     }
 
     public void link() throws Exception {
-    	Logging.infoLog("ShaderProgram", "link", "Linking the ShaderProgram");
+    	LoggingUtils.infoLog("ShaderProgram", "link", "Linking the ShaderProgram");
         glLinkProgram(programId);
         if (glGetProgrami(programId, GL_LINK_STATUS) == 0) {
             throw new Exception("[ShaderProgram.java/link] Error linking Shader code: " + glGetProgramInfoLog(programId, 1024));
@@ -209,7 +209,7 @@ public class ShaderProgram {
 
         glValidateProgram(programId);
         if (glGetProgrami(programId, GL_VALIDATE_STATUS) == 0) {
-        	Logging.errorLog("ShaderProgram", "link", "Warning validating Shader code: " + glGetProgramInfoLog(programId, 1024));
+        	LoggingUtils.errorLog("ShaderProgram", "link", "Warning validating Shader code: " + glGetProgramInfoLog(programId, 1024));
         }
     }
 
@@ -222,10 +222,10 @@ public class ShaderProgram {
     }
 
     public void cleanup() {
-    	Logging.infoLog("ShaderProgram", "cleanup", "Cleaning up the ShaderProgram");
+    	LoggingUtils.infoLog("ShaderProgram", "cleanup", "Cleaning up the ShaderProgram");
         unbind();
         if (programId != 0) {
-        	Logging.infoLog("ShaderProgram", "cleanup", "Deleting ShaderProgram");
+        	LoggingUtils.infoLog("ShaderProgram", "cleanup", "Deleting ShaderProgram");
             glDeleteProgram(programId);
         }
     }

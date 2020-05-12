@@ -1,5 +1,6 @@
 package io.github.seba244c.icespire.graphics;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import org.lwjgl.system.MemoryStack;
@@ -19,30 +20,8 @@ public class Texture {
     private final int width;
     private final int height;
     public ByteBuffer imageBuffer;
-    
+
     public Texture(String fileName) throws Exception {
-        ByteBuffer buf;
-        // Load Texture file
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            IntBuffer w = stack.mallocInt(1);
-            IntBuffer h = stack.mallocInt(1);
-            IntBuffer channels = stack.mallocInt(1);
-
-            buf = stbi_load(fileName, w, h, channels, 4);
-            if (buf == null) {
-                throw new Exception("Image file [" + fileName  + "] not loaded: " + stbi_failure_reason());
-            }
-
-            width = w.get();
-            height = h.get();
-        }
-
-        this.id = createTexture(buf);
-
-        stbi_image_free(buf);
-    }
-    
-    public Texture(String fileName, int thing) throws Exception {
         // Load Texture file
         try (MemoryStack stack = MemoryStack.stackPush()) {
             IntBuffer w = stack.mallocInt(1);
@@ -51,7 +30,7 @@ public class Texture {
 
             imageBuffer = stbi_load(fileName, w, h, channels, 4);
             if (imageBuffer == null) {
-                throw new Exception("Image file [" + fileName  + "] not loaded: " + stbi_failure_reason());
+                throw new IOException("Image file [" + fileName  + "] not loaded: " + stbi_failure_reason());
             }
 
             width = w.get();
@@ -73,7 +52,7 @@ public class Texture {
 
             buf = stbi_load_from_memory(imageBuffer, w, h, channels, 4);
             if (buf == null) {
-                throw new Exception("Image file not loaded: " + stbi_failure_reason());
+                throw new IOException("Image file not loaded: " + stbi_failure_reason());
             }
 
             width = w.get();

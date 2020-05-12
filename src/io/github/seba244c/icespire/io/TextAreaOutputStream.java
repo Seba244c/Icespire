@@ -35,6 +35,7 @@ public class TextAreaOutputStream extends OutputStream {
 	}
 
 	public synchronized void flush() {
+		// Just as a requiement
 	    }
 
 	public synchronized void write(int val) {
@@ -83,12 +84,12 @@ public class TextAreaOutputStream extends OutputStream {
 	        this.document = document;
 	    }
 
-	    synchronized void append(String val) {
+	    private synchronized void append(String val) {
 	        values.add(val);
 	        if(queue) { queue=false; EventQueue.invokeLater(this); }
 	    }
 
-	    synchronized void clear() {
+	    private synchronized void clear() {
 	        clear=true;
 	        lengths.clear();
 	        values.clear();

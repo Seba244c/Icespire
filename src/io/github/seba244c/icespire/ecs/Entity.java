@@ -30,7 +30,6 @@ public class Entity {
                     return componentClass.cast(c);
                 } catch (ClassCastException e) {
                     e.printStackTrace();
-                    System.exit(-1);
                 }
             }
         }
