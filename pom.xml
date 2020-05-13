@@ -2,12 +2,31 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.seba244c.icespire</groupId>
   <artifactId>Icespire</artifactId>
-  <version>1.0.3-SNAPSHOT</version>
+  <version>1.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <name>Icespire</name>
   <description>Icespire is a high-end Java libary wich builds upon lwjgl. Helping java develoopers with creating games. Providing easy window creation, develoopment tools and a fully functional Entity Component System.</description>
   <url>github.com/Sebsa/Icespire</url>
+  
+  <developers>
+        <developer>
+            <id>sebsa</id>
+            <name>Sebastian Snoer</name>
+            <email>seb.snoer@gmail.com</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+  
+  <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://raw.githubusercontent.com/Seba244c/Icespire/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
   
   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
