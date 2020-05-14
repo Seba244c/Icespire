@@ -5,8 +5,8 @@ package io.github.seba244c;
  * @author Sebsa
  * @since 1.0.4
  */
-public class Icespire {
+public class IcespireUtil {
 	public static String getIcespireVersion() {
-		return Icespire.class.getPackage().getImplementationVersion();
+		return IcespireUtil.class.getPackage().getImplementationVersion();
 	}
 }
