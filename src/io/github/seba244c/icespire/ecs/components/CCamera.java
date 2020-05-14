@@ -3,8 +3,10 @@ package io.github.seba244c.icespire.ecs.components;
 import io.github.seba244c.icespire.ecs.Component;
 
 /**
+ * Makes the entity useable as a cameara in the renderer.render function
+ * A camera is the object wich a player sees the world through
  * @author Sebsa
- * @since 20-504
+ * @since 1.0.1
  */
 public class CCamera extends Component {
 	/**

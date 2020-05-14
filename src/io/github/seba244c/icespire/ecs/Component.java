@@ -2,7 +2,7 @@ package io.github.seba244c.icespire.ecs;
 
 /**
  * @author Sebsa
- * @since 20-504
+ * @since 1.0.1
  */
 public abstract class Component<T> {
 	public Entity entity;

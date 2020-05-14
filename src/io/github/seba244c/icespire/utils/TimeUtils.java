@@ -1,5 +1,10 @@
 package io.github.seba244c.icespire.utils;
 
+/**
+ * A class for measuring time and delta time
+ * @author Sebsa
+ * @since 1.0.2
+ */
 public class TimeUtils {
 	private static double time1;
 	private static double dt;

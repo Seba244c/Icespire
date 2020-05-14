@@ -2,9 +2,10 @@ package io.github.seba244c.icespire.graphics;
 
 import org.joml.Vector4f;
 /**
- * Materials wich can be appleid to meshes
+ * Materials wich can be appleid to meshes.
+ * Materials on meshes changes the color and texture of a mesh
  * @author Sebsa
- * @since 20-406 
+ * @since 1.0.2
  *
  */
 public class Material {

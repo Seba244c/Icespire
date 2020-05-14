@@ -14,8 +14,9 @@ import org.lwjgl.stb.STBImage;
 import org.lwjgl.system.MemoryStack;
 
 /**
+ * A class used to load files
  * @author Sebsa
- * @since 20-406 
+ * @since 1.0.2
  *
  */
 public class FileUtils {

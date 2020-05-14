@@ -15,10 +15,10 @@ import org.lwjgl.glfw.GLFWScrollCallback;
 import io.github.seba244c.icespire.utils.LoggingUtils;
 
 /**
- * Input handling
+ * Input handling.
+ * This class is created and stored in all window classes
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.2
  */
 public class Input {
 	private boolean[] keys = new boolean[GLFW.GLFW_KEY_LAST];

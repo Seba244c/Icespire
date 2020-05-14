@@ -9,6 +9,11 @@ import io.github.seba244c.icespire.ecs.Entity;
 
 import io.github.seba244c.icespire.ecs.Scene;
 
+/**
+ * A scene utility class
+ * @author Sebsa
+ * @since 1.0.2
+ */
 public class SceneUtils {
 	public static void jsonToScene() {
 		Reflections reflections = new Reflections("");

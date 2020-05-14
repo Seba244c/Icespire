@@ -9,10 +9,9 @@ import static org.lwjgl.opengl.GL30.*;
 import org.lwjgl.system.MemoryUtil;
 
 /**
- * The graphical representation of an GameObject. Requires an model
+ * The graphical representation of an entity. Requires an model
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.2
  */
 public class Mesh {
 

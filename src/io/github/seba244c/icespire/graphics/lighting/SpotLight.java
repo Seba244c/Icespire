@@ -3,10 +3,9 @@ package io.github.seba244c.icespire.graphics.lighting;
 import org.joml.Vector3f;
 
 /**
- * A pointlight that is cut of at an angle
+ * A spot light that is cut of at an angle
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.1
  */
 public class SpotLight {
 

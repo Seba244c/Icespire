@@ -23,7 +23,7 @@ import io.github.seba244c.icespire.utils.LoggingUtils;
 /**
  * The glfw window the user sees everything in
  * @author Sebsa
- * @since 20-406 
+ * @since 1.0.2
  *
  */
 @SuppressWarnings("deprecation")

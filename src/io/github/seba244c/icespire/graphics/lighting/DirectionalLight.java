@@ -4,8 +4,7 @@ import org.joml.Vector3f;
 /**
  * A light with no specific position. But it just shoot light from a direction like the sun, and it does not fade
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.1
  */
 public class DirectionalLight {
     /**

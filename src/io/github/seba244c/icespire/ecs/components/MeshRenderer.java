@@ -15,8 +15,9 @@ import io.github.seba244c.icespire.graphics.Renderer;
 import io.github.seba244c.icespire.graphics.Texture;
 
 /**
+ * Renders a mesh on each Renderer.render call
  * @author Sebsa
- * @since 20-504
+ * @since 1.0.1
  */
 public class MeshRenderer extends Component {
 	private Mesh mesh;

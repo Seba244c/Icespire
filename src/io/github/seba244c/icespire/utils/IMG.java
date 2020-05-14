@@ -5,7 +5,7 @@ import java.nio.ByteBuffer;
 /**
  * A class purely for storing data
  * @author Sebsa
- * @since 20-406 
+ * @since 1.0.2 
  * @deprecated
  */
 public class IMG {

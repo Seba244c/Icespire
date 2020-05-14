@@ -27,8 +27,7 @@ import io.github.seba244c.icespire.utils.LoggingUtils;
 /**
  * The renderer renders the meshes of gamobjects to the window
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.2
  */
 public class Renderer {
     /**

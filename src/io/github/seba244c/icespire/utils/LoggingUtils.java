@@ -18,9 +18,9 @@ import io.github.seba244c.icespire.io.TextAreaOutputStream;
 
 /**
  * Function that prints stuff in diffrent formats to the console
+ * and has a custom develoopment console window. With timers, console and fps counter
  * @author Sebsa
  * @since 20-406 
- *
  */
 public class LoggingUtils {
 	private static boolean customConsole = false;

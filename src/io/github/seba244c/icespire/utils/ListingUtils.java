@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * General utility class for lists and arrays
  * @author Sebsa
- * @since 20-426 
+ * @since 1.0.2
  */
 public class ListingUtils {
 	public static float[] listToArray(List<Float> list) {

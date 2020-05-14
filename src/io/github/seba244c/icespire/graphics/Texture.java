@@ -13,10 +13,9 @@ import static org.lwjgl.stb.STBImage.stbi_image_free;
 import static org.lwjgl.stb.STBImage.stbi_load_from_memory;
 
 /**
- * A texture can be applied to an material. Requires an image.
+ * A texture is a image can be applied to an material. Requires an image.
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.2
  */
 public class Texture {
     private final int id;

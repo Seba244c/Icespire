@@ -3,8 +3,9 @@ package io.github.seba244c.icespire.ecs;
 import org.joml.Vector3f;
 
 /**
+ * A way to store scale rotation and position
  * @author Sebsa
- * @since 20-504
+ * @since 1.0.1
  */
 public class Transform {
     private final Vector3f position;

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * An object wich exists in a game world
  * @author Sebsa
- * @since 20-406 
+ * @since 1.0.1
  */
 public class Entity {
     private List<Component> components;

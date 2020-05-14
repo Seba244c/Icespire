@@ -4,8 +4,9 @@ import io.github.seba244c.icespire.ecs.Component;
 import io.github.seba244c.icespire.ecs.Entity;
 
 /**
+ * A UI that can render text and sprites
  * @author Sebsa
- * @since 20-427 
+ * @since 1.0.4
  */
 public interface Hud {
 	Entity[] getGameObjects();

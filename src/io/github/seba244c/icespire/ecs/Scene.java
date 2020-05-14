@@ -5,9 +5,9 @@ import io.github.seba244c.icespire.graphics.lighting.PointLight;
 import io.github.seba244c.icespire.graphics.lighting.SpotLight;
 
 /**
- * A scene is a container for lists of things like lights and GameObjects, and is used to render
+ * A scene is a container for lists of things like lights and Entities, and is used to render
  * @author Sebsa
- * @since 20-427
+ * @since 1.0.1
  */
 public class Scene {
 	private Entity[] entities;

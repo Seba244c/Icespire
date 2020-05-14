@@ -7,8 +7,7 @@ import io.github.seba244c.icespire.ecs.Entity;
 
 /**
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.2
  */
 public class Transformation {
 	private final Matrix4f projectionMatrix;

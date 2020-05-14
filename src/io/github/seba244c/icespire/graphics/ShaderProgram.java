@@ -18,8 +18,7 @@ import io.github.seba244c.icespire.utils.LoggingUtils;
 /**
  * Controls the shaders of games
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.2
  */
 public class ShaderProgram {
     private final int programId;

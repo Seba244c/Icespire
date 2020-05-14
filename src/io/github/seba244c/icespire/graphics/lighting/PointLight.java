@@ -5,8 +5,7 @@ import org.joml.Vector3f;
 /**
  * A light wich shoots light rays all around it self, but it slowley fades
  * @author Sebsa
- * @since 20-406 
- *
+ * @since 1.0.1
  */
 public class PointLight {
 	private Vector3f color;

@@ -10,7 +10,7 @@ import javax.swing.text.*;
 
 /**
  * @author Sebsa
- * @since 20-408 
+ * @since 1.0.2
  */
 public class TextAreaOutputStream extends OutputStream {
 	// *************************************************************************************************

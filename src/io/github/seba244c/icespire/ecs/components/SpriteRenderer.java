@@ -17,8 +17,10 @@ import io.github.seba244c.icespire.graphics.Renderer;
 import io.github.seba244c.icespire.graphics.Texture;
 
 /**
+ * Renders a mesh as a sprite on each Renderer.render call
+ * Using a orthographic
  * @author Sebsa
- * @since 20-504
+ * @since 1.0.1
  */
 public class SpriteRenderer extends Component {
 	private Mesh mesh;

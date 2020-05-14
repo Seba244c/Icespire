@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * A object with a text as a mesh W.I.P
  * @author Sebsa
- * @since 20-423
+ * @since 1.0.4
  */
 public class TextObject extends Entity {
 	private static final float ZPOS = 0.0f;
