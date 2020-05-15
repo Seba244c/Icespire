@@ -1,2 +1,3 @@
 cd "E:\Code\Project Icespire\Icespire\"
-mvn package
+call mvn clean
+call mvn package
