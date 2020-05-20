@@ -17,6 +17,7 @@ import io.github.seba244c.icespire.ecs.Scene;
 import io.github.seba244c.icespire.ecs.components.CCamera;
 import io.github.seba244c.icespire.ecs.components.MeshRenderer;
 import io.github.seba244c.icespire.ecs.components.SpriteRenderer;
+import io.github.seba244c.icespire.graphics.gui.Hud;
 import io.github.seba244c.icespire.graphics.lighting.DirectionalLight;
 import io.github.seba244c.icespire.graphics.lighting.PointLight;
 import io.github.seba244c.icespire.graphics.lighting.SpotLight;
@@ -192,6 +193,7 @@ public class Renderer {
         // Create uniforms for Ortographic-model projection matrix and base colour
         hudShaderProgram.createUniform("projModelMatrix");
         hudShaderProgram.createUniform("colour");
+        hudShaderProgram.createUniform("hasTexture");
     }
     
     private void setupSpriteShader() throws Exception {
@@ -215,6 +217,7 @@ public class Renderer {
             Matrix4f projModelMatrix = transformation.getOrtoProjModelMatrix(entity, ortho);
             hudShaderProgram.setUniform("projModelMatrix", projModelMatrix);
             hudShaderProgram.setUniform("colour", entity.getComponent(MeshRenderer.class).getMesh().getMaterial().getAmbientColour());
+            hudShaderProgram.setUniform("hasTexture", entity.getComponent(MeshRenderer.class).getMesh().getMaterial().isTextured() ? 1 : 0);
 
             // Render the mesh for this HUD item
             entity.getComponent(MeshRenderer.class).renderMesh();

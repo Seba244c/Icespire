@@ -1,4 +1,4 @@
-package io.github.seba244c.icespire.graphics;
+package io.github.seba244c.icespire.graphics.gui;
 
 import io.github.seba244c.icespire.ecs.Component;
 import io.github.seba244c.icespire.ecs.Entity;
