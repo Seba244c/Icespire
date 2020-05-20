@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.seba244c.icespire</groupId>
   <artifactId>Icespire</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <name>Icespire</name>
@@ -419,6 +419,6 @@
 	<connection>scm:git:git://github.com/Seba244c/Icespire.git</connection>
 	<developerConnection>scm:git:git@github.com:Seba244c/Seba244c.git</developerConnection>
 	<url>https://https://github.com/Seba244c/Icespire</url>
-	<tag>Icespire-1.0.4</tag>
+	<tag>Icespire-1.0.0</tag>
 </scm>
 </project>
