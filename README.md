@@ -29,3 +29,7 @@ To be written
 1.5.0 - Particels and Animation
 
 1.6.0 - Adding easier 2d capabilities like FIX THE SPRITE RENDERER!
+
+1.7.0 - Assimp model loading
+
+1.8.0 - Deferred Shading
