@@ -21,7 +21,11 @@ To be written
 
 ## Roadmap
 1.2.0 - Physicis and Colisions
+
 1.3.0 - Audio
+
 1.4.0 - Shadows
+
 1.5.0 - Particels and Animation
+
 1.6.0 - Adding easier 2d capabilities like FIX THE SPRITE RENDERER!
