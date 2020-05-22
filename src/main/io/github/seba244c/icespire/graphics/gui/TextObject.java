@@ -4,13 +4,10 @@ import io.github.seba244c.icespire.ecs.Entity;
 import io.github.seba244c.icespire.ecs.components.MeshRenderer;
 import io.github.seba244c.icespire.graphics.Material;
 import io.github.seba244c.icespire.graphics.Mesh;
-import io.github.seba244c.icespire.graphics.Texture;
 import io.github.seba244c.icespire.utils.ListingUtils;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * A object with a text as a mesh W.I.P
  * @author Sebsa

@@ -113,6 +113,7 @@ public class Renderer {
         renderSprites(window);
         
         renderHud(window, hud);
+        
     }
     
     public void render(Window window, Entity camera, Vector3f ambientLight, Scene scene) throws Exception {
