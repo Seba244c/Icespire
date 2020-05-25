@@ -20,9 +20,9 @@ To be written
 To be written
 
 ## Roadmap
-1.2.0 - Physicis and Colisions
+1.2.0 - Audio
 
-1.3.0 - Audio
+1.3.0 - Physicis and Colisions
 
 1.4.0 - Shadows
 
