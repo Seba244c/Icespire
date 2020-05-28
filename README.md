@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/seba244c/icespire)](https://github.com/Seba244c/Icespire/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/seba244c/icespire)](https://github.com/Seba244c/Icespire/blob/master/LICENSE)
 ![Size](https://img.shields.io/github/repo-size/Seba244c/Icespire)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/994f814af8c749d48d0ad49a797c71e7)](https://www.codacy.com/manual/Seba244c/Icespire?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seba244c/Icespire&amp;utm_campaign=Badge_Grade)
 # Icespire
